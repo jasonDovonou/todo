@@ -1,0 +1,18 @@
+<mat-toolbar>Todo N°{{todo.id}}</mat-toolbar>
+<div class="form">
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Title" name="title" [(ngModel)]="todo.title" required #title="ngModel">
+    </mat-form-field>
+
+    <div *ngIf="title.errors && title.touched">
+        <div class="error" *ngIf="title.errors.required">
+            Titre requis
+        </div>
+    </div>
+
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="Description" name="description" [(ngModel)]="todo.description"></textarea>
+    </mat-form-field>
+
+    <button mat-button [disabled]="title.errors" (click)="save()">Save</button>
+</div>
